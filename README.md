@@ -43,15 +43,15 @@ For 3.18 kernel
  * Auto brightness
  * Adjustable brightness
  * GPS
- * Hotspot (test)
  * Video Recorder
  * Poweroff Chager
- * NFC (need test)
+ * NFC 
 
  ## Broken/Bugs
  * VideoRecorder need 3rd camera
  * RIL (insert sim will unknow baseband)
  * Decodec
+ * Hotspot (other device can not connect)
 
 ### Credits:
   - KJONES

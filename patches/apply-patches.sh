@@ -21,7 +21,7 @@ cd system/netd
 patch -p1 < ../../device/sony/pine/patches/system/0004-system_netd.patch
 cd ../..
 cd system/core
-patch -p1 < ../../device/sony/pine/patches/0001-for-pine.patch
+patch -p1 < ../../device/sony/pine/patches/system/0001-for-pine.patch
 cd ../..
 cd frameworks/opt/telephony
 patch -p1 < ../../../device/sony/pine/patches/frameworks/telephony.patch

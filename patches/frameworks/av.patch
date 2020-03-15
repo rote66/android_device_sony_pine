@@ -2240,7 +2240,7 @@ index 0bf9701c8..904fa686c 100644
 +++ b/media/libstagefright/colorconversion/Android.mk
 @@ -1,4 +1,5 @@
  LOCAL_PATH:= $(call my-dir)
-+//ifneq ($(strip $(BOARD_USES_MTK_HARDWARE)),true)
++#ifneq ($(strip $(BOARD_USES_MTK_HARDWARE)),true)
  include $(CLEAR_VARS)
  
  LOCAL_SRC_FILES:=                     \
@@ -2248,7 +2248,7 @@ index 0bf9701c8..904fa686c 100644
  LOCAL_MODULE:= libstagefright_color_conversion
  
  include $(BUILD_STATIC_LIBRARY)
-+//endif
++#endif
 \ No newline at end of file
 diff --git a/media/libstagefright/omx/OMX.cpp b/media/libstagefright/omx/OMX.cpp
 index d6fb2b2e8..fec663085 100644
