@@ -1,5 +1,11 @@
 [
  {
+    "target_path": "packages/resources/devicesettings",
+    "repository":  "LineageOS/android_packages_resources_devicesettings",
+    "remote":      "github",
+    "revision":    "cm-14.1"
+  },
+ {
     "target_path": "kernel/sony/pine",
     "repository":  "rote66/android_kernel_sony_pìne",
     "remote":      "github",
@@ -7,7 +13,7 @@
   },
   {
     "target_path": "vendor/sony/pine",
-    "repository":  "rote66/vendor_sony_pine",
+    "repository":  "rote66/android_vendor_sony_pine",
     "remote":      "github",
     "revision":    "los14.1
   }

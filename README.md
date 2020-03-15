@@ -1,6 +1,4 @@
-# device_sony_pine
-
-Device configuration for Sony XPERIA L1
+# Device configuration for Sony XPERIA L1 (7.x,3.18.35+,64bit)
 ========================================
 
 Basic   | Spec Sheet
@@ -20,9 +18,33 @@ Camera  | 13 MP, f/2.2, autofocus
 
 ![Sony XPERIA L1](https://fdn2.gsmarena.com/vv/pics/sony/sony-xperia-l1-0.jpg)
 
-Device for G3311
+===========================
 
-For 3.18 kernel
+Getting Started
+---------------
+
+Initialize a repository with Los14.1:
+
+    repo init -u git://github.com/lineageos/android.git -b cm-14.1
+    
+Sync sources:    
+
+    repo sync
+    
+Clone this device:
+    
+    git clone https://github.com/rote66/android_device_sony_pine.git -b los-14.1 device/sony/pine
+    
+Patch the sources:
+
+    cd device/sony/pine/patches
+    ./apply-patches.sh
+    cd ../../../../
+
+Build the code:
+
+    build/envsetup.sh
+    brunch lineage_pine-userdebug
 
 ===========================
 
@@ -69,6 +91,7 @@ For 3.18 kernel
   - mohancm
   - darklord4822
   - MT8163
+  - Moyster
   - SonyCustoms (tuba dev)
   
 And about everyone else in the Mediatek community ;)  
