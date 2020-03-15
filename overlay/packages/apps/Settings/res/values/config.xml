@@ -29,7 +29,5 @@
     <bool name="config_enableRecoveryUpdater">false</bool>
     <bool name="config_gesture_settings_enabled">true</bool>
 
-    <!-- Display ro.product.name above Device model -->
-    <bool name="config_displayDeviceName">true</bool>
 </resources>
  

@@ -36,7 +36,7 @@ For 3.18 kernel
  * Audio
  * Flashlight (statusbar and camera)
  * Micro SD support
- * MTP and Mass Storage modes
+ * MTP modes
  * RAM and ROM
  * Rotation
  * Camera rear/front (photographs only)
@@ -46,12 +46,12 @@ For 3.18 kernel
  * Video Recorder
  * Poweroff Chager
  * NFC 
+ * Hotspot
 
  ## Broken/Bugs
- * VideoRecorder need 3rd camera
+ * VideoRecorder need 3rd camera (fooj
  * RIL (insert sim will unknow baseband)
- * Decodec
- * Hotspot (other device can not connect)
+ * MTK Decodec
 
 ### Credits:
   - KJONES
