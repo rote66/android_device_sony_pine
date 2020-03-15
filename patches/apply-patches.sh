@@ -13,6 +13,7 @@ patch -p1 < ../../device/sony/pine/patches/frameworks/0009-add-mtk-color-format-
 cd ../..
 cd frameworks/base
 patch -p1 < ../../device/sony/pine/patches/frameworks/base.patch
+patch -p1 < ../../device/sony/pine/patches/frameworks/0001-fix-bootanimation-for-pine.patch
 cd ../..
 cd frameworks/native
 patch -p1 < ../../device/sony/pine/patches/frameworks/native.patch
