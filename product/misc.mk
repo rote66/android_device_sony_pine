@@ -4,5 +4,6 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    libnl_2
+    libnl_2 \
+    SonyDoze
  
