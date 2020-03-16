@@ -7,7 +7,6 @@
 # Purpose : Set audio driver permission to access SD card for debug purpose and accss NVRam.
 allow audioserver sdcard_type:dir { w_dir_perms create };
 allow audioserver sdcard_type:file create;
-allow audioserver DW9763AF_device:chr_file { read write open ioctl };
 allow audioserver nvram_data_file:dir w_dir_perms;
 allow audioserver nvram_data_file:file create_file_perms;
 allow audioserver nvram_data_file:lnk_file read;

@@ -19,7 +19,6 @@ type mt6516_IDP_device, dev_type;
 type mt9p012_device, dev_type;
 type mt6516_jpeg_device, dev_type;
 type FM50AF_device, dev_type;
-type DW9763AF_device, dev_type;
 type DW9714AF_device, dev_type;
 type DW9814AF_device, dev_type;
 type AK7345AF_device, dev_type;
@@ -238,3 +237,6 @@ type ut_keymaster_device, dev_type;
 type dri_device, dev_type, mlstrustedobject;
 type hotknot_device, dev_type;
 type irrx_device, dev_type;
+
+# Fingerprint device
+type esfp0_device, dev_type, mlstrustedobject;

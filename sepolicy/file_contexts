@@ -112,7 +112,6 @@
 /dev/cpu_dma_latency(/.*)? u:object_r:cpu_dma_latency_device:s0
 /dev/devmap(/.*)? u:object_r:devmap_device:s0
 /dev/dummy_cam_cal(/.*)? u:object_r:dummy_cam_cal_device:s0
-/dev/DW9763AF(/.*)? u:object_r:DW9763AF_device:s0
 /dev/DW9714AF(/.*)? u:object_r:DW9714AF_device:s0
 /dev/DW9814AF(/.*)? u:object_r:DW9814AF_device:s0
 /dev/AK7345AF(/.*)? u:object_r:AK7345AF_device:s0
@@ -570,6 +569,13 @@
 # Data files
 #
 /data/misc/sensor.log           u:object_r:bmm050_sensor_log_file:s0
+
+# Fingerprint device
+/dev/esfp0(/.*)? u:object_r:esfp0_device:s0
+
+# aka.jiang add for fingerprint ET3XX 20160308
+/system/bin/etsd  u:object_r:etsd_exec:s0
+/dev/esfp0       u:object_r:etsd_data_file:s0
 
 #############################
 # System files

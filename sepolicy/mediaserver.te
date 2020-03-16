@@ -102,7 +102,6 @@ allow mediaserver fm_device:chr_file rw_file_perms;
 allow mediaserver block_device:dir search;
 allow mediaserver FM50AF_device:chr_file rw_file_perms;
 allow mediaserver AD5820AF_device:chr_file rw_file_perms;
-allow mediaserver DW9763AF_device:chr_file { read write ioctl open };
 allow mediaserver DW9714AF_device:chr_file rw_file_perms;
 allow mediaserver DW9814AF_device:chr_file rw_file_perms;
 allow mediaserver AK7345AF_device:chr_file rw_file_perms;

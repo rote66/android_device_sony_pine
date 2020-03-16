@@ -188,7 +188,6 @@ allow factory MAIN2AF_device:chr_file rw_file_perms;
 allow factory SUBAF_device:chr_file rw_file_perms;
 allow factory FM50AF_device:chr_file rw_file_perms;
 allow factory AD5820AF_device:chr_file rw_file_perms;
-allow factory DW9763AF_device:chr_file { read write ioctl open };
 allow factory DW9714AF_device:chr_file rw_file_perms;
 allow factory DW9714A_device:chr_file rw_file_perms;
 allow factory LC898122AF_device:chr_file rw_file_perms;

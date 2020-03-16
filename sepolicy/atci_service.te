@@ -47,7 +47,6 @@ allow atci_service atci_data_file:dir remove_name;
 allow atci_service atci_data_file:sock_file unlink;
 allow atci_service system_server:unix_dgram_socket sendto;
 #allow atci_service system_data_file:file rw_file_perms;
-allow atci_service DW9763AF_device:chr_file { read write ioctl open };
 allow atci_service atci_data_file:sock_file write;
 allow atci_service misc2_device:chr_file { open read write };
 allow atci_service mmcblk0_block_device:blk_file { open read write };

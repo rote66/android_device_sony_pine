@@ -121,7 +121,6 @@ allow meta_tst camera_sysram_device:chr_file r_file_perms;
 allow meta_tst kd_camera_flashlight_device:chr_file rw_file_perms;
 allow meta_tst kd_camera_hw_device:chr_file rw_file_perms;
 allow meta_tst AD5820AF_device:chr_file rw_file_perms;
-allow meta_tst DW9763AF_device:chr_file { read write ioctl open };
 allow meta_tst DW9714AF_device:chr_file rw_file_perms;
 allow meta_tst DW9714A_device:chr_file rw_file_perms;
 allow meta_tst LC898122AF_device:chr_file rw_file_perms;

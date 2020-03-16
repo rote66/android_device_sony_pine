@@ -5,19 +5,19 @@
 # Date : WK14.31
 # Operation : Migration
 # Purpose : camera devices access.
-#allow cameraserver camera_isp_device:chr_file rw_file_perms;
-#allow cameraserver kd_camera_hw_device:chr_file rw_file_perms;
+allow cameraserver camera_isp_device:chr_file rw_file_perms;
+allow cameraserver kd_camera_hw_device:chr_file rw_file_perms;
 allow cameraserver self:capability { setuid ipc_lock sys_nice };
 allow cameraserver sysfs_wake_lock:file rw_file_perms;
-#allow cameraserver MTK_SMI_device:chr_file r_file_perms;
+allow cameraserver MTK_SMI_device:chr_file r_file_perms;
 allow cameraserver camera_pipemgr_device:chr_file r_file_perms;
-#allow cameraserver kd_camera_flashlight_device:chr_file rw_file_perms;
+allow cameraserver kd_camera_flashlight_device:chr_file rw_file_perms;
 allow cameraserver lens_device:chr_file rw_file_perms;
 allow cameraserver nvdata_file:dir { write search add_name };
 allow cameraserver nvdata_file:file { read write getattr setattr open create };
 allow cameraserver nvram_data_file:dir search;
 allow cameraserver nvram_data_file:dir w_dir_perms;
-#allow cameraserver nvram_data_file:file create_file_perms;
+allow cameraserver nvram_data_file:file create_file_perms;
 allow cameraserver nvram_data_file:lnk_file read;
 allow cameraserver proc:file { read ioctl open };
 allow cameraserver proc_meminfo:file { read getattr open };
@@ -33,7 +33,7 @@ allow cameraserver self:capability { net_admin };
 # Date : WK14.34
 # Operation : Migration
 # Purpose : VP/VR
-#allow cameraserver devmap_device:chr_file { ioctl };
+allow cameraserver devmap_device:chr_file { ioctl };
 
 # Date : WK14.34
 # Operation : Migration
@@ -71,7 +71,7 @@ allow cameraserver Vcodec_device:chr_file rw_file_perms;
 allow cameraserver MtkCodecService:binder call;
 allow cameraserver ccci_device:chr_file rw_file_perms;
 allow cameraserver eemcs_device:chr_file rw_file_perms;
-#allow cameraserver devmap_device:chr_file r_file_perms;
+allow cameraserver devmap_device:chr_file r_file_perms;
 allow cameraserver ebc_device:chr_file rw_file_perms;
 allow cameraserver nvram_device:blk_file rw_file_perms;
 allow cameraserver mmcblk0_block_device:blk_file rw_file_perms;
@@ -80,7 +80,7 @@ allow cameraserver mmcblk0_block_device:blk_file rw_file_perms;
 # Operation : Migration
 # Purpose : for SW codec VP/VR
 #allow cameraserver mtk_device:chr_file { read write ioctl open };
-#allow cameraserver mtk_sched_device:chr_file rw_file_perms;
+allow cameraserver mtk_sched_device:chr_file rw_file_perms;
 
 # Date : WK14.38
 # Operation : Migration
@@ -125,7 +125,7 @@ allow cameraserver sdcard_type:file append;
 # Date : WK14.39
 # Operation : Migration
 # Purpose : FDVT Driver
-#allow cameraserver camera_fdvt_device:chr_file rw_file_perms;
+allow cameraserver camera_fdvt_device:chr_file rw_file_perms;
 
 # Date : WK14.39
 # Operation : Migration
@@ -162,11 +162,7 @@ allow cameraserver uhid_device:chr_file rw_file_perms;
 # Date : WK14.41
 # Operation : Migration
 # Purpose : Camera EEPROM Calibration
-# cameraserver - camera daemon
-allow cameraserver CAM_CAL_DRV_device:chr_file { read write open ioctl };
-allow cameraserver camera_isp_device:chr_file { read write open ioctl };
-allow cameraserver camera_fdvt_device:chr_file { read write open ioctl };
-#allow cameraserver CAM_CAL_DRV_device:chr_file rw_file_perms;
+allow cameraserver CAM_CAL_DRV_device:chr_file rw_file_perms;
 allow cameraserver CAM_CAL_DRV1_device:chr_file rw_file_perms;
 allow cameraserver CAM_CAL_DRV2_device:chr_file rw_file_perms;
 
@@ -208,7 +204,7 @@ allow cameraserver qemu_pipe_device:chr_file rw_file_perms;
 # Date : WK14.46
 # Operation : Migration
 # Purpose : for camera init
-#allow cameraserver system_server:unix_stream_socket { read write };
+allow cameraserver system_server:unix_stream_socket { read write };
 
 # Data : WK14.46
 # Operation : Migration
@@ -500,23 +496,3 @@ allow cameraserver media_rw_data_file:file { create_file_perms };
 allow cameraserver sdcardfs:dir { w_dir_perms };
 allow cameraserver sdcardfs:file { create_file_perms };
 allow cameraserver sysfs:file getattr;
-
-#allow cameraserver default_prop:property_service { set };	** need to change system/sepolicy, later **
-allow cameraserver device:chr_file { ioctl };
-allow cameraserver devmap_device:chr_file { read write open ioctl };
-#allow cameraserver init:unix_stream_socket { connectto };
-allow cameraserver kd_camera_hw_device:chr_file { read write open ioctl };
-allow cameraserver kd_camera_flashlight_device:chr_file { read write open ioctl };
-allow cameraserver mediatek_prop:file { read open getattr };
-allow cameraserver mtk_sched_device:chr_file { read write open ioctl };
-allow cameraserver MTK_SMI_device:chr_file { read open ioctl };
-allow cameraserver nvram_data_file:file { read open getattr };
-#allow cameraserver proc:file { read open ioctl };
-#allow cameraserver proc_meminfo:file { read open getattr };
-#allow cameraserver property_socket:sock_file { write };
-#allow cameraserver pq_service:service_manager { find };
-allow cameraserver rootfs:lnk_file { getattr };
-#allow cameraserver sensorservice_service:service_manager { find };
-#allow cameraserver sysfs:file { read write open getattr };
-allow cameraserver system_server:unix_stream_socket { read write connectto };
-
