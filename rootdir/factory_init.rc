@@ -502,6 +502,8 @@ on boot
     hostname localhost
     domainname localdomain
 
+    setprop logmuch.detect.value 10000
+
     #INTERNAL_START
     # Start default class, this line is very important!!
     class_start default
@@ -616,7 +618,7 @@ service ccci_rpcd /vendor/bin/ccci_rpcd 0
 service nvram_daemon /vendor/bin/nvram_daemon
     class main
     user root
-    group system
+    group system trimarea
     oneshot
 
 service mdlogger /vendor/bin/mdlogger

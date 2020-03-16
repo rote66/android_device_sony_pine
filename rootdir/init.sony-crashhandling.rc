@@ -5,6 +5,9 @@
 
 
 on init
+    # Set 1 to stop MTBF SMS report
+    setprop persist.sys.crashmon.stop.sms 1
+
 # SONY: Start the TrimArea Daemon. It must be started before fota-ua
 # start crashmonitorns
 

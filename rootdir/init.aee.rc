@@ -13,6 +13,8 @@ on property:persist.aee.core.dump=enable
 on init
     export LD_PRELOAD libdirect-coredump.so
     write /proc/self/coredump_filter 39
+    setprop ro.aee.enforcing no
+
 
 on property:vold.decrypt=trigger_restart_framework
     restart debuggerd

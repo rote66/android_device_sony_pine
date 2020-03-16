@@ -31,10 +31,11 @@ import init.modem.rc
 #import init.arima-s1.rc
 #//<2015/11/20-ychuang
 
-#import init.charge_loggingd.rc
+import init.charge_loggingd.rc
 
 on early-init
     write /proc/bootprof "INIT:early-init"
+    write /sys/power/vcorefs/vcore_debug "KIR_BOOTUP 0"
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -59,6 +60,10 @@ on init
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
     # setprop ro.vold.primary_physical 1
+
+    # BATTERY proc
+    chown shell system /proc/mtk_battery_cmd/current_cmd
+    chown shell system /proc/mtk_battery_cmd/discharging_cmd
 
     # Expose exp_main
     setprop persist.aee.preserve.main enable
@@ -671,8 +676,8 @@ on post-fs-data
 
     #//<2016/12/02-AlanChang, Fix Trustonic Test Suite test case failure.
     # mcDriverDaemon
-    #mkdir /data/misc/mcRegistry 0775 system system
-    #mkdir /data/misc/mcRegistry/TbStorage 0775 system system
+    mkdir /data/misc/mcRegistry 0775 system system
+    mkdir /data/misc/mcRegistry/TbStorage 0775 system system
     #//>2016/12/02-AlanChang.
 
     # AGPS
@@ -721,6 +726,7 @@ on boot
     chmod 0660 /sys/kernel/debug/ged/hal/vsync_offset_level
     chown system system /sys/kernel/debug/ged/hal/event_notify
     chmod 0660 /sys/kernel/debug/ged/hal/event_notify
+    chown media media /sys/kernel/debug/ged/hal/media_event
     chown system system /sys/kernel/debug/ged/hal/custom_upbound_gpu_freq
     chmod 0660 /sys/kernel/debug/ged/hal/custom_upbound_gpu_freq
     chown system system /sys/kernel/debug/ged/hal/custom_boost_gpu_freq
@@ -924,7 +930,7 @@ service bugreport /system/bin/dumpstate -d -p -B \
 # start ged_srv
 on property:sys.boot_completed=1
     start ged_srv
-
+    write /sys/power/vcorefs/vcore_debug "KIR_BOOTUP -1"
 on property:sys.boot_completed=1
     write /proc/hps/enabled 1
 
@@ -1287,7 +1293,14 @@ service md_monitor /vendor/bin/md_monitor
     class main
     user system
     group system radio sdcard_rw inet sdcard_r media_rw
+    disabled
+    oneshot
 
+on property:persist.mdmmonitor=0
+    stop md_monitor
+
+on property:persist.mdmmonitor=1
+    start md_monitor
 #
 #sensor service (begin)
 #
@@ -1333,6 +1346,7 @@ service memsicd3630x /vendor/bin/memsicd3630x
 	 user system
     group system
     class main
+    oneshot
 #-->[SM31][Sensors][JasonHsing] M-sensor memsic3630 driver porting 20161004 END --
 	
 service akmd8975 /vendor/bin/akmd8975
@@ -1493,8 +1507,8 @@ service poad /vendor/bin/poad
 #monitor battery status
 service batterywarning /vendor/bin/batterywarning
     class main
-    user shell
-    group shell
+    user system
+    group system
 
 
 
@@ -1712,6 +1726,43 @@ on property:persist.batterymonitor.log=true
 on property:persist.batterymonitor.log=false
     stop ArimaBatMonLog
 # [Arima_8100][bozhi_lin] 20161201 end
+
+# [Arima_8103][bozhi_lin] RID001102 Battery Care ver 1.0 for DD 20170622 begin
+on property:persist.service.battery.smt_chg=activate
+    write /sys/class/power_supply/battery/smart_charging_activation 1
+
+on property:persist.service.battery.smt_chg=charging_suspend
+    write /sys/class/power_supply/battery/smart_charging_interruption 1
+
+on property:persist.service.battery.smt_chg=charging_resume
+    write /sys/class/power_supply/battery/smart_charging_interruption 0
+# [Arima_8103][bozhi_lin] 20170622 end
+
+#[SM32][Sensors][JasonHsing] Add node to change P/L-sensor parameter by manual 20170712 BEGIN --
+on property:persist.als.parameter=*
+    write /sys/bus/platform/drivers/als_ps/als_parameter ${persist.als.parameter}
+
+on property:persist.ps.parameter=*
+    write /sys/bus/platform/drivers/als_ps/ps_parameter ${persist.ps.parameter}
+#[SM32][Sensors][JasonHsing] Add node to change P/L-sensor parameter by manual 20170712 END --
+
+# [Arima_8103][bozhi_lin] add reset file node for battery capacity reset 20170719 begin
+on property:system.rtc.reset=1
+    write /sys/devices/platform/battery/RTC_RESET 1
+# [Arima_8103][bozhi_lin] 20170719 end
+
+# [Arima_8103][bozhi_lin] enable Qnovo in all build and add qns_disable file node for temp disable Qnovo 20170824 begin
+on property:persist.qns.disable=*
+    write /sys/devices/platform/battery/QNS_disable ${persist.qns.disable}
+# [Arima_8103][bozhi_lin] 20170824 end
+
+# [Arima_8103][bozhi_lin] add property to enable disable charging for run in test 20170920 begin
+on property:sys.runintest.enable=1
+    write /sys/devices/platform/battery/Charging_disable 1
+
+on property:sys.runintest.enable=0
+    write /sys/devices/platform/battery/Charging_disable 0
+# [Arima_8103][bozhi_lin] 20170920 end
 
 #service For init.d
 service run-parts /system/xbin/busybox run-parts /system/etc/init.d
