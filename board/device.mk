@@ -1,6 +1,6 @@
 # OTA
 BLOCK_BASED_OTA := true
-TARGET_OTA_ASSERT_DEVICE := pine
+TARGET_OTA_ASSERT_DEVICE := pine,pine_dsds
 
 # Bionic
 
