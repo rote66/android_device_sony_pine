@@ -25,7 +25,6 @@ ro.media.maxmem=500000000
 # RIL
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
-persist.radio.multisim.config=dsds
 persist.radio.fd.counter=7
 persist.radio.fd.off.counter=5
 persist.radio.fd.r8.counter=7
