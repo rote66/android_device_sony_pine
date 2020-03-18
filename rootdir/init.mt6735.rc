@@ -1522,7 +1522,7 @@ service MtkCodecService /vendor/bin/MtkCodecService
     group audio media sdcard_r
 
 # GuiExt Server init
-service guiext-server /vendor/bin/guiext-server
+service guiext-server /system/bin/guiext-server
     class main
     user system
     group system graphics
