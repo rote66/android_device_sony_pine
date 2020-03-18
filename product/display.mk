@@ -1,4 +1,5 @@
 # Display
 PRODUCT_PACKAGES += \
-    libion 
+    libion \
+    guiext-server
 
