@@ -31,7 +31,7 @@ import init.modem.rc
 #import init.arima-s1.rc
 #//<2015/11/20-ychuang
 
-import init.charge_loggingd.rc
+#import init.charge_loggingd.rc
 
 on early-init
     write /proc/bootprof "INIT:early-init"
@@ -838,8 +838,8 @@ on property:vold.decrypt=trigger_restart_framework
 #-->[SM31][Sensors][JasonHsing] M-sensor memsic3630 driver porting 20161004 END --
     start permission_check
 #//<2015/11/30-ychuang, [S1] Fix ta restore issue.
-    start ta_sync_md
-    start update_ta_info
+    #start ta_sync_md
+    #start update_ta_info
  #//<2015/11/30-ychuang.
 
 on property:vold.decrypt=trigger_shutdown_framework

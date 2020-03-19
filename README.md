@@ -69,6 +69,7 @@ Build the code:
  * Poweroff Chager
  * NFC 
  * Hotspot
+ * Sdcard
 
  ## Broken/Bugs
  * VideoRecorder need 3rd camera (fooj

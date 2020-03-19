@@ -8,7 +8,7 @@
 #
 
 on post-fs
-    start charge_logging
+    #start charge_logging
 
 on post-fs-data
     chown qns qns /sys/class/qns
@@ -31,6 +31,6 @@ service qns /system/bin/qns -l /qns/ -d /qns/
     socket qnsbsd stream 660 qns system
     disabled
 
-service charge_logging /system/bin/charge_logging
+#service charge_logging /system/bin/charge_logging
    user root
    disabled
