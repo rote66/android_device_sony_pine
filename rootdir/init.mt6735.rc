@@ -5,7 +5,7 @@ import init.project.rc
 import /FWUpgradeInit.rc
 import init.aee.rc
 import init.fon.rc
-import init.rilproxy.rc
+#import init.rilproxy.rc
 import init.volte.rc
 import init.mal.rc
 import init.wfca.rc
